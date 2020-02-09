@@ -1,0 +1,9 @@
+A fractal is a set in the cartesian plane which is connected meaning that for every point, all points in between are within the set.
+A fractal can also be zoomed in upon to produce a pattern that continues to progress for any amount of scaling. Orbit is an iteration or
+sequence defined by some operation. For example the iteration f(x)=|z|^2-1 is the 0th orbit. and the 1st orbit f composed with itself
+i.e. f(f(0))=||z|^2-1|-1 and so on.
+
+Julia set: The filled Julia set any point for which the orbit (or iteration) is bounded. The boundary is simply called the Julia set. 
+Filled julia set is similar to the area and the Julia set is similar to the perimeter. 
+
+Mandelbrot set: The mandelbrot set is the set of values for C in which the Julia set is connected.
