@@ -1,0 +1,37 @@
+phi = inline('z^2'); %define the function we're seeking fixed points for
+fixpt1 = (1 + sqrt(6))/2;   %fixed points we're seeking
+fixpt2 = (1-sqrt(6))/2;
+
+colormap([1 0 0 ; 1 1 1]);  %Points numbered 1 (inside) will be red
+                            %Points numbered 2 (outside) will be white
+M = 2*ones(141,361);        %Initialize array of colors to 2 (white)
+
+for j=1:141                 %Try initial values with imaginary part
+    y = -.7 + (j-1)*.01;     % between -0.7 and 0.7
+    for i=1:361             %and real parts
+        x = -1.8+ (i-1)*.01;    %-1.8 to 1.8
+        z= x + 1i*y;        
+        zk = z;
+        iflag1 = 0;         %iflag1 and iflag2 are iteration counts
+        iflag2 = 0;         %when a root is within 1.e-6 of a fixed point
+        kount = 0;          %kount is the total number of iterations
+        
+        while kount < 100 && abs(zk) < 2 && iflag1 < 5 && iflag2 < 5
+            kount = kount + 1;
+            zk = phi(zk);   %The fixed point iteration
+            
+            err1 = abs(zk-fixpt1);  %test for convergence to fixpt1
+            if err1 < 1.e-6, iflag1 = iflag1 + 1; else iflag1 = 0; end
+            
+            err2 = abs(zk-fixpt2);  %test for convergence to fixpt2
+            if err2 < 1.e-6, iflag2 = iflag2 + 1; else iflag2 = 0; end
+            
+        end
+        if iflag1 >= 5 || iflag2 >= 5 | kount >= 100   
+            M(j,i) = 1;             %if orbit is bounded set point to color 1
+        end
+    end
+end
+
+image([-1.8 1.8],[-.7 .7],M),       %plot the results
+axis xy                             %orient the axis direction
