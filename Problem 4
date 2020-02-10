@@ -1,2 +1,6 @@
-Fractal dimension is a measure of the 'zoom' or scale of a fractal. It can also be thought of as a measure of how 'complicated' a self similar image is.
-one way to calculate this is given by the formula Fractal dimension D = log(N)/log(1/r). 
+Fractal dimension is a measure of the 'zoom' or scale of a fractal. 
+It can also be thought of as a measure of how 'complicated' a self similar image is.
+One way to calculate this is given by the formula Fractal dimension D = log(N)/log(1/r).
+Where N is the number of distinct copies (or seld-similar pices) and (1/r) is how much the copy is scaled down.
+For example, if we have a square that is two by two and we scale it down to one by one, then out ratio is 1/2, where r=2.
+So with this, we can conclude that the fractal dimension of a square is 2.
