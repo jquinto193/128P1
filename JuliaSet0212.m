@@ -1,4 +1,4 @@
-c=0.16+0.59i;          % the value of c, change it
+c=0.16+0.59i;          % the value of c, can change it
 nx=1001;              % the number of points in x direction
 ny=1001;              % the number of points in y direction
 ymax=1.5;             % the max y value
