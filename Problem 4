@@ -17,4 +17,9 @@ the set. which gives fractal dimension as [log(13027) - log(23241)]/(log(.75)-lo
 And finally when c=0 (the filled julia set is the unit disc) we have the number of points in M, as computed is 31403
 (approximately pi because the area is pi*r^2=pi when r=1). And we can follow the same prescription as before and scale by .75 to get
 M = 55869 to get  [log(31403) - log(55869)]/(log(.75)-log(1)) =~ 2.00257. Again about 2. So it seems that no matter the julia set we choose
-it's fractal dimension is always 2.
+it's fractal dimension is always close to 2.
+
+
+[log(31403) - log(55869)]/(log(.75)-log(1))
+
+[log(31403) - log(55869)]/(log(.75)-log(1))[log(31403) - log(55869)]/(log(.75)-log(1))
