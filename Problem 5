@@ -27,4 +27,5 @@ for j = 1:itr
     M(abs(z) > 100 & M == 0) = itr - j; %divergence occours at |z| > 100
 end
 imagesc(M) 
+colormap gray
 end
