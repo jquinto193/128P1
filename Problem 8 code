@@ -1,0 +1,17 @@
+%Forget all this crazy looping nonsense, matlab is really slow at this,
+%use what matlab is good at, matrices and vectors.
+[x,y] = meshgrid(linspace(-2, 1, 800), linspace(-1.5, 1.5, 800)); %Create two matrices x,y that go from -2 to 1
+                                                                  %and -1.5 to 1.5 each with 800x800
+                                                                  %(-2 )
+c = x + 1i * y;                 %Now C is the complex number associated
+                                %with the position 
+z = zeros(800);                 %Create an 8 x 8 matrix Z initialized to 0
+k = zeros(800);                 %similarly for k, which is going to hold the number of iterations for which phi=z^2+c diverges from 0
+for j = 1:40
+    z   = z.^2 + c;             %calculate the value of z at the point in the complex plane c=x+iy
+    k(abs(z) > 2 & k == 0) = 40 - j; %if abs(z) > 2 then the point is divergent at the iteration j. it took 40 - j iterations to diverge
+end
+figure,
+imagesc([-2 1],[-1.5 1.5],k),
+colormap jet %This map is coloring all the convergent points 0 as blue and  the rest goes to shades of yellow and red
+axis xy
