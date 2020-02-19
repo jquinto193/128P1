@@ -1,0 +1,30 @@
+if the orb(0) is bounded then the Julia set is connected (that is any two points in the set can be joined by a line).
+this means that by definition, the mandelbrot set M is the set of all values of complex numbers c, for which the Julia sets are connected.
+which is the same as saying z_0 = 0+0i. though, at orb(0), the iterations of 0 remain connected and determines whether the Julia set is
+connected or not. when iterated at point c and z = 0, we see that the number of iterations it takes for a starting point to diverge of 
+|z| > 100 , makes the mandelbrot set of divergent points which we see in this code. at 2 points (julia set , straight line), we also see
+the rate at which each points diverges. nonconnected julia set points are those that diverge.
+
+function Project1_mat128b(n, itr,x1,y1,x2,y2)
+%n = points in mandelbrot set
+%itr = # of iterations until divergence of n
+% x1,y1 = starting point
+%x2,y2 = secondary point  
+% n = 500; 
+% itr = 50;
+% x1 = -2; 
+% x2 = 1;
+% y1 = -1;
+% y2 = 2;
+[x,y] = meshgrid(linspace(x1, x2, n), linspace(y1, y2, n)); % # of points generated between starting and secondary point
+
+c = x + 1i * y; %julia set of complex number c
+z = 0; % orb(0)
+M = zeros(size(c));
+
+for j = 1:itr
+    z   = z.^2 + c;
+    M(abs(z) > 100 & M == 0) = itr - j; %divergence occours at |z| > 100
+end
+imagesc(M) 
+end
