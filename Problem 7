@@ -1,0 +1,50 @@
+the roots of the polynomial in the colored orbits are on the borders of the fractal pattern with 2 different points. the larger the nth 
+root, the more branches it will have.
+%function for z^3 - 1 newtons iteration fixed n=3 for z^n - 1
+function Project1_mat128b_Q7
+colors = [1 1 0; 1 0 1; 1 1 1];
+xaxis = 500; %points in x axis
+yaxis = 500; %points in y axis
+itr = 50; %iterations
+tolerance = .01;
+fz = @(z) z^3 - 1;
+dfz = @(z) 3*z^2;
+zroots = roots([1 0 0 -1]);
+nroot = length(zroots);
+
+[X Y] = meshgrid(linspace(1, -2, xaxis), linspace(-1, 2, yaxis));
+
+img = zeros(yaxis, xaxis, 3);
+
+for m = 1 : yaxis
+    for n = 1 : xaxis
+        k = 1;
+        z0 = X(m,n) + 1i*Y(m,n);
+        zn = 0+ 1i*0;
+        while k < itr
+            zn = z0 - fz(z0)/dfz(z0);
+            if abs(zn - z0) < tolerance
+                break;
+            end
+            z0 = zn;
+            k = k+1;
+        end
+         rootindex = 0;
+        for t = 1 : nroot
+            if abs(zn - zroots(t)) < tolerance
+                rootindex = t;
+                break;
+            end
+        end
+        
+        if rootIndex > 0
+            img(m, n, 1) = colors(rootindex,1) * (1-(k/itr));
+            img(m ,n, 2) = colors(rootindex,2) * (1-(k/itr));
+            img(m ,n, 3) = colors(rootindex,3) * (1-(k/itr));
+        end
+    end
+end
+   
+image(img);
+end
+
