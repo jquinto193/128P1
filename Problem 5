@@ -3,7 +3,9 @@ this means that by definition, the mandelbrot set M is the set of all values of 
 which is the same as saying z_0 = 0+0i. though, at orb(0), the iterations of 0 remain connected and determines whether the Julia set is
 connected or not. when iterated at point c and z = 0, we see that the number of iterations it takes for a starting point to diverge of 
 |z| > 100 , makes the mandelbrot set of divergent points which we see in this code. at 2 points (julia set , straight line), we also see
-the rate at which each points diverges. nonconnected julia set points are those that diverge.
+the rate at which each points diverges. nonconnected julia set points are those that diverge. and by definition in the book "black points
+are the values of c for which the julia set is connected, while the sahding of other points indicates the rate at which the fixed point
+iteration applied to z^2 + c with z_0 = 0 diverges".
 
 function Project1_mat128b(n, itr,x1,y1,x2,y2)
 %n = points in mandelbrot set
